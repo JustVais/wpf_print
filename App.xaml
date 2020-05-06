@@ -4,6 +4,32 @@
              xmlns:local="clr-namespace:wpf_print"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="Grid" x:Key="MainMenu">
+            <Setter Property="Background" Value="#2196F4"/>
+        </Style>
+        <Style TargetType="Image" x:Key="ImgInMainMenuButton">
+            <Setter Property="Width" Value="25"/>
+        </Style>
+        <Style TargetType="Button" x:Key="ButtonInMainMenu">
+            <Setter Property="Width" Value="30"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="Border" x:Key="BorderLeft">
+            <Setter Property="BorderThickness" Value="1 0 0 0"/>
+            <Setter Property="BorderBrush" Value="#d6d9dc"/>
+        </Style>
     </Application.Resources>
 </Application>
