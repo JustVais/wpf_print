@@ -37,10 +37,60 @@
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="0">
-                
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Border Style="{StaticResource Border}" BorderThickness="0 0 0 1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width=".5*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0" >
+                                <Border Style="{StaticResource Border}" BorderThickness="0 0 1 0">
+                                    <TextBlock Style="{StaticResource TableCellText}" Text="Заголовок файла"/>
+                                </Border>
+                            </Grid>
+                            <Grid Grid.Column="1" >
+                                <Border Style="{StaticResource Border}" BorderThickness="0 0 1 0">
+                                    <TextBlock Style="{StaticResource TableCellText}" Text="Время печати"/>
+                                </Border>
+                            </Grid>
+                            <Grid Grid.Column="2">
+                                <Border Style="{StaticResource Border}" BorderThickness="0 0 1 0">
+                                    <TextBlock Style="{StaticResource TableCellText}" Text="Тип документа"/>
+                                </Border>
+                            </Grid>
+                            <Grid Grid.Column="3">
+                                <Border Style="{StaticResource Border}" BorderThickness="0 0 1 0">
+                                    <TextBlock Style="{StaticResource TableCellText}" Text="Размер листа"/>
+                                </Border>
+                            </Grid>
+                            <Grid Grid.Column="4">
+                                <Border Style="{StaticResource Border}" BorderThickness="0 0 1 0">
+                                    <TextBlock Style="{StaticResource TableCellText}" Text="Вес файла"/>
+                                </Border>
+                            </Grid>
+                            <Grid Grid.Column="5">
+                                <Border Style="{StaticResource Border}" BorderThickness="0 0 1 0">
+                                    <TextBlock Style="{StaticResource TableCellText}" Text="Статус"/>
+                                </Border>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </Grid>
+                <Grid Grid.Row="1"></Grid>
             </Grid>
+            
             <Grid Grid.Column="1">
-                <Border Style="{StaticResource BorderLeft}">
+                <Border Style="{StaticResource Border}" BorderThickness="1 0 0 0">
                     
                 </Border>
             </Grid>
