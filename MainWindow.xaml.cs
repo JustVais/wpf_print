@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using wpf_print.View;
 
 namespace wpf_print
 {
@@ -27,6 +28,8 @@ namespace wpf_print
             MinimizeButton.Click += (s, e) => WindowState = WindowState.Minimized; 
             MaximizeButton.Click += (s, e) => WindowState = WindowState.Maximized; 
             CloseButton.Click += (s, e) => Close();
+
+            DataContext = new MainWindowViewModel();
         }
     }
 }
