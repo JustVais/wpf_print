@@ -23,6 +23,10 @@ namespace wpf_print
         public MainWindow()
         {
             InitializeComponent();
+
+            MinimizeButton.Click += (s, e) => WindowState = WindowState.Minimized; 
+            MaximizeButton.Click += (s, e) => WindowState = WindowState.Maximized; 
+            CloseButton.Click += (s, e) => Close();
         }
     }
 }

@@ -4,15 +4,53 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_print"
-        mc:Ignorable="d" Width="1000" Height="800">
+        mc:Ignorable="d" Width="1000" Height="800"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent" >
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="30"/>
+    </WindowChrome.WindowChrome>
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50px"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Column="0" Style="{StaticResource MainMenu}">
+
+        <Grid VerticalAlignment="Top" Grid.Row="0" Background="#1976D3">
+            <StackPanel Height="40" WindowChrome.IsHitTestVisibleInChrome="True" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal" Margin="15 0 ">
+                <Button Width="17" Style="{StaticResource ButtonInChromeMenu}" Name="MinimizeButton">
+                    <Path Stretch="Uniform" Fill="#fff" Width="15" Height="15" >
+                        <Path.Data>
+                            <PathGeometry Figures="m 290.0004,130.99664 0,2 6,0 0,-2 z"/>
+                        </Path.Data>
+                    </Path>
+                </Button>
+                <Button Width="17" Style="{StaticResource ButtonInChromeMenu}" Name="MaximizeButton" Margin="15 0">
+                    <Path Stretch="Uniform" Fill="#fff" Width="15" Height="15" >
+                        <Path.Data>
+                            <PathGeometry Figures="M2604 3361 c-170 -5 -194 -8 -213 -25 -21 -19 -21 -26 -21 -383 l0 -363 195 0 195 0 0 200 0 200 595 0 595 0 0 -400 0 -400 -195 0 -195 0 0 -295 0 -295 350 0 c382 0 400 2 420 56 6 15 10 344 10 837 0 954 14 858 -127 869 -103 7 -1329 7 -1609 -1z M1432 2370 c-12 -5 -27 -21 -32 -35 -11 -29 -14 -1623 -4 -1663 15 -53 -11 -52 978 -52 l915 0 28 24 28 24 3 827 2 826 -29 30 -29 29 -919 -1 c-526 0 -928 -4 -941 -9z m1528 -775 l0 -395 -595 0 -595 0 0 395 0 395 595 0 595 0 0 -395z"/>
+                        </Path.Data>
+                        <Path.LayoutTransform>
+                            <ScaleTransform ScaleX="-1"/>
+                        </Path.LayoutTransform>
+                    </Path>
+                </Button>
+                <Button Width="17" Style="{StaticResource ButtonInChromeMenu}" Name="CloseButton">
+                    <Path Stretch="Uniform" Fill="#fff" Width="15" Height="15" >
+                        <Path.Data>
+                            <PathGeometry Figures="m 270.0002,125 a 1,1 0 0 0 -1,1 1,1 0 0 0 0.29297,0.70703 l 2.29297,2.29297 -2.29297,2.29297 A 1,1 0 0 0 269.0002,132 a 1,1 0 0 0 1,1 1,1 0 0 0 0.70703,-0.29297 l 2.29297,-2.29297 2.2832,2.28321 a 1,1 0 0 0 0.7168,0.30273 1,1 0 0 0 1,-1 1,1 0 0 0 -0.29297,-0.70703 L 274.41426,129 l 2.28321,-2.2832 A 1,1 0 0 0 277.0002,126 a 1,1 0 0 0 -1,-1 1,1 0 0 0 -0.70703,0.29297 l -2.29297,2.29297 -2.2832,-2.28321 a 1,1 0 0 0 -0.01,-0.01 A 1,1 0 0 0 270,125 Z"/>
+                        </Path.Data>
+                    </Path>
+                </Button>
+            </StackPanel>
+        </Grid>
+        
+        <Grid Grid.Row="1" Style="{StaticResource MainMenu}">
             <Button Style="{StaticResource ButtonInMainMenu}" Margin="20 0 0 0" >
                 <Path Stretch="Uniform" Fill="#fff" Width="25" Height="25" >
                     <Path.Data>
@@ -29,8 +67,8 @@
                 </Path>
             </Button>
         </Grid>
-        
-        <Grid Grid.Row="1">
+
+        <Grid Grid.Row="2" Background="#F4F6F4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="4*"/>
                 <ColumnDefinition Width="1.2*"/>
