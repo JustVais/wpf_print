@@ -164,9 +164,9 @@
                     <Grid VerticalAlignment="Bottom" Height="50" Background="#fff" Visibility="{Binding ShowControlPanel}">
                         <Border Padding="20 0 20 0">
                             <StackPanel Orientation="Horizontal" >
-                                <Button Content="Начать печать"  Style="{StaticResource ControlButtons}"/>
-                                <Button Content="Отменить печать" Margin="20 0" Style="{StaticResource ControlButtons}"/>
-                                <Button Content="Повторить печать" Style="{StaticResource ControlButtons}"/>
+                                <Button Content="Начать печать"  Style="{StaticResource ControlButtons}" Command="{Binding SendDocumentForPrintCommand}"/>
+                                <Button Content="Отменить печать" Margin="20 0" Style="{StaticResource ControlButtons}" Command="{Binding CancelSelectedPrintCommand}"/>
+                                <Button Content="Повторить печать" Style="{StaticResource ControlButtons}" Command="{Binding SendDocumentForPrintCommand}"/>
                             </StackPanel>
                         </Border>
                     </Grid>
@@ -185,7 +185,7 @@
 
                         <Grid Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25 0 0 0">
                             <StackPanel>
-                                <Button Style="{StaticResource ButtonsInRightMenu}">
+                                <Button Style="{StaticResource ButtonsInRightMenu}" Command="{Binding ShowAllDocumentsCommand}">
                                     <StackPanel Orientation="Horizontal">
                                         <Path Stretch="Uniform" Fill="#707370" Width="15" Height="15" >
                                             <Path.Data>
@@ -195,7 +195,7 @@
                                         <TextBlock Margin="8 0 0 0" Style="{StaticResource forAllText}" Text="Мои документы" VerticalAlignment="Center"/>
                                     </StackPanel>
                                 </Button>
-                                <Button Style="{StaticResource ButtonsInRightMenu}" Margin="0 15 0 0">
+                                <Button Style="{StaticResource ButtonsInRightMenu}" Margin="0 15 0 0" Command="{Binding ShowDocumentsInPrinterCommand}">
                                     <StackPanel Orientation="Horizontal">
                                         <Path Stretch="Uniform" Fill="#707370" Width="15" Height="15" >
                                             <Path.Data>
@@ -205,7 +205,7 @@
                                         <TextBlock Margin="8 0 0 0" Style="{StaticResource forAllText}" Text="В печати" VerticalAlignment="Center"/>
                                     </StackPanel>
                                 </Button>
-                                <Button Style="{StaticResource ButtonsInRightMenu}"  Margin="0 15">
+                                <Button Style="{StaticResource ButtonsInRightMenu}"  Margin="0 15" Command="{Binding ShowComplitedPrintsCommand}">
                                     <StackPanel Orientation="Horizontal">
                                         <Path Stretch="Uniform" Fill="#707370" Width="15" Height="15" >
                                             <Path.Data>
@@ -221,7 +221,7 @@
                                         <TextBlock Margin="8 0 0 0" Style="{StaticResource forAllText}" Text="Завершённые" VerticalAlignment="Center"/>
                                     </StackPanel>
                                 </Button>
-                                <Button Style="{StaticResource ButtonsInRightMenu}">
+                                <Button Style="{StaticResource ButtonsInRightMenu}" Command="{Binding ShowCanceledPrintsCommand}">
                                     <StackPanel Orientation="Horizontal">
                                         <Path Stretch="Uniform" Fill="#707370" Width="15" Height="15" >
                                             <Path.Data>
