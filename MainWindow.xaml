@@ -164,9 +164,9 @@
                     <Grid VerticalAlignment="Bottom" Height="50" Background="#fff" Visibility="{Binding ShowControlPanel}">
                         <Border Padding="20 0 20 0">
                             <StackPanel Orientation="Horizontal" >
-                                <Button Content="Начать печать"  Style="{StaticResource ControlButtons}" Command="{Binding SendDocumentForPrintCommand}"/>
-                                <Button Content="Отменить печать" Margin="20 0" Style="{StaticResource ControlButtons}" Command="{Binding CancelSelectedPrintCommand}"/>
-                                <Button Content="Повторить печать" Style="{StaticResource ControlButtons}" Command="{Binding SendDocumentForPrintCommand}"/>
+                                <Button Content="Начать печать" Visibility="{Binding StartPrint}" Style="{StaticResource ControlButtons}" Command="{Binding SendDocumentForPrintCommand}"/>
+                                <Button Content="Отменить печать" Visibility="{Binding CancelPrint}" Margin="20 0" Style="{StaticResource ControlButtons}" Command="{Binding CancelSelectedPrintCommand}"/>
+                                <Button Content="Повторить печать" Visibility="{Binding AgainPrint}" Style="{StaticResource ControlButtons}" Command="{Binding SendDocumentForPrintCommand}"/>
                             </StackPanel>
                         </Border>
                     </Grid>
@@ -246,7 +246,7 @@
                             <Border Style="{StaticResource Border}" BorderThickness="0 1 0 0">
                                 <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                                     <StackPanel>
-                                        <TextBlock Text="Процесс печати:" Margin="0 0 0 5"/>
+                                        <TextBlock Text="Процесс печати документа:" Margin="0 0 0 5"/>
                                         <ProgressBar Width="200" Height="10" Value="{Binding ProgressBar}"/>
                                     </StackPanel>
                                 </Grid>
