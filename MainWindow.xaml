@@ -7,13 +7,13 @@
         mc:Ignorable="d" Width="1000" Height="800"
         WindowStyle="None"
         AllowsTransparency="True"
-        Background="Transparent" >
+        Background="Transparent">
 
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="30"/>
     </WindowChrome.WindowChrome>
 
-    <Grid>
+    <Grid x:Name="currentCanvas" MouseLeftButtonDown="OnMouseLeftButtonDown">
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
             <RowDefinition Height="50"/>
@@ -51,21 +51,23 @@
         </Grid>
 
         <Grid Grid.Row="1" Style="{StaticResource MainMenu}">
-            <Button Style="{StaticResource ButtonInMainMenu}" Margin="20 0 0 0" Command="{Binding AddNewDocumentCommand}">
-                <Path Stretch="Uniform" Fill="#fff" Width="25" Height="25" >
-                    <Path.Data>
-                        <PathGeometry Figures="m405.332031 192h-170.664062v-170.667969c0-11.773437-9.558594-21.332031-21.335938-21.332031-11.773437 0-21.332031 9.558594-21.332031 21.332031v170.667969h-170.667969c-11.773437 0-21.332031 9.558594-21.332031 21.332031 0 11.777344 9.558594 21.335938 21.332031 21.335938h170.667969v170.664062c0 11.777344 9.558594 21.335938 21.332031 21.335938 11.777344 0 21.335938-9.558594 21.335938-21.335938v-170.664062h170.664062c11.777344 0 21.335938-9.558594 21.335938-21.335938 0-11.773437-9.558594-21.332031-21.335938-21.332031zm0 0"/>
-                    </Path.Data>
-                </Path>
-            </Button>
-            <Button Style="{StaticResource ButtonInMainMenu}" Margin="70 0 0 0" >
-                <Path Stretch="Uniform" Fill="#fff" Width="25" Height="25" >
-                    <Path.Data>
-                        <PathGeometry Figures="M399 2965 c-36 -19 -63 -78 -55 -119 4 -18 20 -46 37 -62 l30 -29 1309 0 1309 0 30 29 c39 38 48 83 26 130 -34 71 64 66 -1367 66 -1099 -1 -1297 -3 -1319 -15z  M393 2500 c-22 -13 -36 -32 -44 -61 -11 -37 -11 -46 7 -78 40 -76 -35 -71 1131 -71 714 0 1051 3 1070 11 90 34 109 141 35 199 -24 20 -46 20 -1096 20 -1044 0 -1072 -1 -1103 -20z M387 2039 c-39 -30 -53 -85 -34 -131 9 -20 28 -45 43 -55 27 -17 73 -18 829 -21 440 -2 819 0 843 3 27 4 55 17 75 35 28 25 32 35 32 80 0 46 -4
+            <StackPanel Orientation="Horizontal" Margin="15 0 0 0">
+                <Button Style="{StaticResource ButtonInMainMenu}" Margin="0 0 20 0" Command="{Binding AddNewDocumentCommand}">
+                    <Path Stretch="Uniform" Fill="#fff" Width="25" Height="25" >
+                        <Path.Data>
+                            <PathGeometry Figures="m405.332031 192h-170.664062v-170.667969c0-11.773437-9.558594-21.332031-21.335938-21.332031-11.773437 0-21.332031 9.558594-21.332031 21.332031v170.667969h-170.667969c-11.773437 0-21.332031 9.558594-21.332031 21.332031 0 11.777344 9.558594 21.335938 21.332031 21.335938h170.667969v170.664062c0 11.777344 9.558594 21.335938 21.332031 21.335938 11.777344 0 21.335938-9.558594 21.335938-21.335938v-170.664062h170.664062c11.777344 0 21.335938-9.558594 21.335938-21.335938 0-11.773437-9.558594-21.332031-21.335938-21.332031zm0 0"/>
+                        </Path.Data>
+                    </Path>
+                </Button>
+                <Button Style="{StaticResource ButtonInMainMenu}" >
+                    <Path Stretch="Uniform" Fill="#fff" Width="25" Height="25" >
+                        <Path.Data>
+                            <PathGeometry Figures="M399 2965 c-36 -19 -63 -78 -55 -119 4 -18 20 -46 37 -62 l30 -29 1309 0 1309 0 30 29 c39 38 48 83 26 130 -34 71 64 66 -1367 66 -1099 -1 -1297 -3 -1319 -15z  M393 2500 c-22 -13 -36 -32 -44 -61 -11 -37 -11 -46 7 -78 40 -76 -35 -71 1131 -71 714 0 1051 3 1070 11 90 34 109 141 35 199 -24 20 -46 20 -1096 20 -1044 0 -1072 -1 -1103 -20z M387 2039 c-39 -30 -53 -85 -34 -131 9 -20 28 -45 43 -55 27 -17 73 -18 829 -21 440 -2 819 0 843 3 27 4 55 17 75 35 28 25 32 35 32 80 0 46 -4
 55 -33 81 l-32 29 -849 0 c-841 0 -849 0 -874 -21z M426 1600 c-88 -27 -111 -143 -39 -200 25 -20 39 -20 645 -20 l620 0 34 34 c27 27 34 42 34 74 0 51 -37 97 -88 112 -45 12 -1164 12 -1206 0z M410 1132 c-20 -9 -44 -33 -54 -53 -18 -32 -18 -41 -7 -78 8 -29 22 -48 44 -61 30 -19 53 -20 415 -20 l384 0 34 34 c38 38 45 86 19 135 -30 59 -47 61 -442 61 -321 0 -362 -2 -393 -18z "/>
-                    </Path.Data>
-                </Path>
-            </Button>
+                        </Path.Data>
+                    </Path>
+                </Button>
+            </StackPanel>
         </Grid>
 
         <Grid Grid.Row="2" Background="#F4F6F4">
@@ -83,7 +85,7 @@
                     <Border Style="{StaticResource Border}" BorderThickness="0 0 0 1">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="1.8*"/>
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="1*"/>
@@ -106,7 +108,7 @@
                                 </Border>
                             </Grid>
                             <Grid Grid.Column="3">
-                                <Border Style="{StaticResource Border}" BorderThickness="0 0 1 0">
+                                <Border Style="{StaticResource Border}" BorderThickness="0 0 1 0" >
                                     <TextBlock Style="{StaticResource TableCellText}" Text="Размер листа"/>
                                 </Border>
                             </Grid>
@@ -116,7 +118,7 @@
                                 </Border>
                             </Grid>
                             <Grid Grid.Column="5">
-                                <Border Style="{StaticResource Border}" BorderThickness="0 0 1 0">
+                                <Border Style="{StaticResource Border}">
                                     <TextBlock Style="{StaticResource TableCellText}" Text="Статус"/>
                                 </Border>
                             </Grid>
@@ -124,7 +126,8 @@
                     </Border>
                 </Grid>
                 <Grid Grid.Row="1">
-                    <ListBox ItemsSource="{Binding SortedDocumentsList}" Background="Transparent" HorizontalContentAlignment="Stretch" BorderThickness="0">
+                    <ListBox ItemsSource="{Binding SortedDocumentsList}" SelectionMode="Single" 
+                             SelectedItem="{Binding SelectedDocument}" Background="Transparent" HorizontalContentAlignment="Stretch" BorderThickness="0">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -158,12 +161,54 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
+                    <Grid VerticalAlignment="Bottom" Height="50" Background="#fff" Visibility="{Binding ShowControlPanel}">
+                        <Border Padding="20 0 20 0">
+                            <StackPanel Orientation="Horizontal" >
+                                <Button Content="Начать печать" Margin="0 0 20 0" Style="{StaticResource ControlButtons}"/>
+                                <Button Content="Отменить печать" Style="{StaticResource ControlButtons}"/>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
                 </Grid>
             </Grid>
 
-            <Grid Grid.Column="1">
+            <Grid Grid.Column="1" Background="#FAFAFA">
                 <Border Style="{StaticResource Border}" BorderThickness="1 0 0 0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="150" />
+                            <RowDefinition Height="150" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="100" />
+                        </Grid.RowDefinitions>
 
+                        <Grid Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <StackPanel>
+                                <Button Content="Все документы"/>
+                                <Button Content="Документы в печати" Margin="0 10 0 10"/>
+                                <Button Content="Остановленные печати"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <Grid Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <StackPanel>
+                                <Button Content="Остановить все печати"/>
+                                <Button Content="Остановить печать" Margin="0 10 0 10" Command="{Binding CancelPrintingCommand}"/>
+                                <Button Content="Начать печать" Command="{Binding SendDocumentForPrintCommand}"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <Grid Grid.Row="3">
+                            <Border Style="{StaticResource Border}" BorderThickness="0 1 0 0">
+                                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <StackPanel>
+                                        <TextBlock Text="Процесс печати:" Margin="0 0 0 5"/>
+                                        <ProgressBar Width="200" Height="10" Value="{Binding ProgressBar}"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </Grid>
                 </Border>
             </Grid>
         </Grid>

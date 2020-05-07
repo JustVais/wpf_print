@@ -21,6 +21,8 @@ namespace wpf_print
     /// </summary>
     public partial class MainWindow : Window
     {
+        private MainWindowViewModel _mainWindowViewModel;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -28,8 +30,21 @@ namespace wpf_print
             MinimizeButton.Click += (s, e) => WindowState = WindowState.Minimized; 
             MaximizeButton.Click += (s, e) => WindowState = WindowState.Maximized; 
             CloseButton.Click += (s, e) => Close();
+            _mainWindowViewModel = new MainWindowViewModel();
+            DataContext = _mainWindowViewModel;
+        }
 
-            DataContext = new MainWindowViewModel();
+        private void OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Point pt = e.GetPosition((UIElement)sender);
+
+            HitTestResult result = VisualTreeHelper.HitTest(currentCanvas, pt);
+
+            if (result != null && result.GetType() != typeof(ListViewItem))
+            {
+                _mainWindowViewModel.ShowControlPanel = "Hidden";
+                _mainWindowViewModel.SelectedDocument = null;    
+            }
         }
     }
 }

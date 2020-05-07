@@ -47,11 +47,30 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style TargetType="Button" x:Key="ControlButtons">
+            <Setter Property="Background" Value="#2196F4"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Foreground" Value="#fff"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="0" Height="35" Padding="10 0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#1e90ff"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
         <Style TargetType="Border" x:Key="Border">
             <Setter Property="BorderBrush" Value="#d6d9dc"/>
         </Style>
         <Style TargetType="TextBlock" x:Key="TableCellText" BasedOn="{StaticResource forAllText}">
-            <Setter Property="Margin" Value="15"/>
+            <Setter Property="Padding" Value="15"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
