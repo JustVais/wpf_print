@@ -186,11 +186,29 @@ namespace wpf_print.View
             {
                 new PrintableDocument()
                 {
-                    Title = "some title",
-                    TimeInSec = 10,
-                    DocumentType = "doc",
-                    ListSizes = new Tuple<int, int>(1000, 1000),
-                    Size = 100,
+                    Title = "Document docx",
+                    TimeInSec = "11",
+                    DocumentType = "docx",
+                    ListSizes = new Tuple<int, int>(1000, 1050),
+                    Size = "1567",
+                    Status = LOADED
+                },
+                new PrintableDocument()
+                {
+                    Title = "Document pdf",
+                    TimeInSec = "8",
+                    DocumentType = "pdf",
+                    ListSizes = new Tuple<int, int>(200, 500),
+                    Size = "180",
+                    Status = LOADED
+                },
+                new PrintableDocument()
+                {
+                    Title = "Image",
+                    TimeInSec = "5",
+                    DocumentType = "png",
+                    ListSizes = new Tuple<int, int>(1900, 100),
+                    Size = "2340",
                     Status = LOADED
                 }
             };
@@ -215,10 +233,10 @@ namespace wpf_print.View
                 var newDocument = new PrintableDocument()
                 {
                     Title = fileWindow.SafeFileName.Split('.')[0],
-                    TimeInSec = rand.Next(5, 15),
+                    TimeInSec = rand.Next(5, 15).ToString(),
                     DocumentType = fileWindow.SafeFileName.Split('.')[1],
                     ListSizes = new Tuple<int, int>(rand.Next(500, 2000), rand.Next(500, 2000)),
-                    Size = rand.Next(10, 10000),
+                    Size = rand.Next(10, 10000).ToString(),
                     Status = LOADED
                 };
 
@@ -255,7 +273,7 @@ namespace wpf_print.View
 
                         ProgressBar = 0;
 
-                        var seconds = _documentsInPrintList[i].TimeInSec;
+                        var seconds = Int32.Parse(_documentsInPrintList[i].TimeInSec.Split(' ')[0]);
                         for (var j = 0; j <= seconds; j++)
                         {
                             ProgressBar = j * (100 / seconds);

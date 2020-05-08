@@ -11,10 +11,10 @@ namespace wpf_print.Models
     public class PrintableDocument : INotifyPropertyChanged, ICloneable
     {
         private string _title;
-        private int _timeInSec;
+        private string _timeInSec;
         private string _documentType;
         private Tuple<int, int> _listSizes;
-        private int _size;
+        private string _size;
         private string _status;
 
         public string Title
@@ -27,12 +27,12 @@ namespace wpf_print.Models
             }
         }
 
-        public int TimeInSec
+        public string TimeInSec
         {
             get { return _timeInSec; }
             set
             {
-                _timeInSec = value;
+                _timeInSec = value+" сек";
                 OnPropertyChanged("TimeInSec");
             }
         }
@@ -57,12 +57,12 @@ namespace wpf_print.Models
             }
         }
 
-        public int Size
+        public string Size
         {
             get { return _size; }
             set
             {
-                _size = value;
+                _size = value + " кб";
                 OnPropertyChanged("Size");
             }
         }
@@ -81,10 +81,10 @@ namespace wpf_print.Models
             return new PrintableDocument()
             {
                 Title = _title,
-                TimeInSec = _timeInSec,
+                TimeInSec = _timeInSec.Split(' ')[0],
                 DocumentType = _documentType,
                 ListSizes = _listSizes,
-                Size = _size,
+                Size = _size.Split(' ')[0],
                 Status = _status
             };
         }
