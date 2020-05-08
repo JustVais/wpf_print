@@ -25,6 +25,7 @@ namespace wpf_print.View
         private Thread _printingThread;
         private int _progressBar;
         private string _showControlPanel = "Hidden";
+        private string _showListStatus = "Hidden";
         private string[] _currentDocumentsStatuses = new string[]{ "Загружен" };
 
         private string LOADED = "Загружен";
@@ -36,6 +37,7 @@ namespace wpf_print.View
         private string _startPrint = "Collapsed";
         private string _cancelPrint = "Collapsed";
         private string _againPrint = "Collapsed";
+
 
 
 
@@ -69,6 +71,16 @@ namespace wpf_print.View
             }
         }
 
+        public string ShowListStatus
+        {
+            get { return _showListStatus; }
+            set
+            {
+                _showListStatus = value;
+                OnPropertyChanged("ShowListStatus");
+            }
+        }
+
         public string ShowControlPanel
         {
             get { return _showControlPanel; }
@@ -95,6 +107,7 @@ namespace wpf_print.View
             set
             {
                 _sortedDocumentsList = value;
+                ShowListStatus = _sortedDocumentsList.Count == 0 ? "Visibility" : "Hidden";
                 OnPropertyChanged("SortedDocumentsList");
             }
         }
@@ -191,7 +204,7 @@ namespace wpf_print.View
         {
             OpenFileDialog fileWindow = new OpenFileDialog();
 
-            fileWindow.Filter = "Pdf files(*.pdf)|*.pdf|Doc files(*.doc)|*.doc|Png files(*.png)|*.png|Jpg files(*.jpg)|*.jpg";
+            fileWindow.Filter = "Pdf files(*.pdf)|*.pdf|Doc files(*.docx)|*.docx|Png files(*.png)|*.png|Jpg files(*.jpg)|*.jpg";
 
             DialogResult result = fileWindow.ShowDialog();
 
@@ -206,11 +219,12 @@ namespace wpf_print.View
                     DocumentType = fileWindow.SafeFileName.Split('.')[1],
                     ListSizes = new Tuple<int, int>(rand.Next(500, 2000), rand.Next(500, 2000)),
                     Size = rand.Next(10, 10000),
-                    Status = "Ожидает"
+                    Status = LOADED
                 };
 
                 DocumentsList.Add(newDocument);
             }
+            ShowDocuments(_currentDocumentsStatuses);
         }
 
         public ICommand AddNewDocumentCommand
@@ -260,9 +274,9 @@ namespace wpf_print.View
         {
             var selectedDocumentClone = (PrintableDocument)SelectedDocument.Clone();
 
-            ChangeDocumentStatus(selectedDocumentClone, WAITING_FOR_PRINT);
-
             _documentsInPrintList.Add(selectedDocumentClone);
+
+            ChangeDocumentStatus(selectedDocumentClone, WAITING_FOR_PRINT);
 
 
             if (_printingThread == null)

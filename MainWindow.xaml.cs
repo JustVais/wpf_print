@@ -28,7 +28,7 @@ namespace wpf_print
             InitializeComponent();
 
             MinimizeButton.Click += (s, e) => WindowState = WindowState.Minimized; 
-            MaximizeButton.Click += (s, e) => WindowState = WindowState.Maximized; 
+            MaximizeButton.Click += (s, e) => WindowState =  WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized; 
             CloseButton.Click += (s, e) => Close();
             _mainWindowViewModel = new MainWindowViewModel();
             DataContext = _mainWindowViewModel;
